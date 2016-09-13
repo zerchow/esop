@@ -1,3 +1,7 @@
+[http]
+  proxy = http://dev-proxy.oa.com:8080
+[http "http://git.code.oa.com/"]
+  proxy =
 /EsopDealer/Debug/*.pdb
 /EsopDealer/EsopDealer/x64
 /EsopDealer/EsopDealer/Debug
