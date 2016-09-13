@@ -25,7 +25,6 @@
     <ClInclude Include="clib_mysql.h" />
     <ClInclude Include="ControllerBase.h" />
     <ClInclude Include="ControllerFactory.h" />
-    <ClInclude Include="gbk_uni.h" />
     <ClInclude Include="interface_command_key_define.h" />
     <ClInclude Include="interface_error_define.h" />
     <ClInclude Include="ModelBase.h" />
@@ -40,7 +39,6 @@
     <ClCompile Include="clib_mysql.cpp" />
     <ClCompile Include="ControllerBase.cpp" />
     <ClCompile Include="ControllerFactory.cpp" />
-    <ClCompile Include="ctype-gbk.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelBase.cpp" />
     <ClCompile Include="process_message.cpp" />

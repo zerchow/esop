@@ -4,7 +4,6 @@
 #include <mysql.h>
 #include "clib_mysql.h"
 #include <string>
-#include <clocale>
 
 using namespace std;
 
@@ -16,32 +15,24 @@ using namespace std;
 
 int main()
 {
-	//char * pTest = "我是1ge测试字符串abc";
-	//char * pGbk = NULL;
-	//uint iErr;
-
-	////1个GBK编码转utf-8最多3个ascii字符
-	//char *pTestUtf8 = (char*)malloc(strlen(pTest) * 3 + 1);
-	//uint32 iRealLen = gbk2utf8(pTestUtf8, strlen(pTest) * 3, pTest, strlen(pTest), &iErr);
-	//pTestUtf8[iRealLen] = '\0';
-	//printf("len=%d,%s\n", iRealLen, pTestUtf8);
-
-	//pGbk = (char*)malloc(iRealLen + 1);
-	//iRealLen = utf82gbk(pGbk, iRealLen, pTestUtf8, iRealLen, &iErr);
-	//pGbk[iRealLen] = '\0';
-	//printf("len=%d,%s\n", iRealLen, pGbk);
-
-	//free(pTestUtf8);
-	//free(pGbk);
-
-	//return 0;
-
 	clib_mysql * obj = clib_mysql::get_instance(HOST, PORT, USER, PASS);
 	obj->db_connect();
 	obj->set_db(DB);
-	string sql = "insert into log values(1, '程序员', 1, '操作对象', '2016-09-12', '192.168.0.1', '测试插入', 'ESOP', 4);";
 	obj->set_character_set("utf8");
-	int ret = obj->query(sql.c_str());
+	int ret;
+	/*string sql = "insert into log(operator, operator_id, operated_object, operate_time, operate_ip, operate_explanation, application, sensitivity_level) values('程序员', 1, '操作对象', '2016-09-12', '192.168.0.1', '测试插入', 'ESOP', 4);";
+
+	obj->set_character_set("utf8");
+	ret = obj->query(sql.c_str());
+	cout << ret << endl;*/
+
+	//sql = "INSERT INTO esop_application_form(company_stauff_number,mobile,company_name_short,linkman_position,linkman_name,	application_time,headoffice,company_name,industry,register,is_deleted,industry_other) VALUES(30000, '15023333333', '腾讯', 'CEO', 'Pony', '2015.09.16', '深圳', '腾讯公司',1, 1, 0, '');";
+	char templatesql[] = "INSERT INTO esop_application_form(company_stauff_number,mobile,company_name_short,linkman_position,linkman_name,application_time,headoffice,company_name,industry,register,is_deleted,industry_other) VALUES(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, %d, '%s');";
+	string stringsql = "INSERT INTO esop_application_form(company_stauff_number,mobile,company_name_short,linkman_position,linkman_name,application_time,headoffice,company_name,industry,register,is_deleted,industry_other) VALUES(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %d, %d, '%s');";
+	char testsql[1024] = "";
+	snprintf(testsql, 1024, stringsql.c_str(), 30000, "15023333333", "腾讯", "CEO", "Pony", "2015.09.16", "深圳", "腾讯公司", 1, 1, 0, "");
+	//cout << testsql << endl;
+	ret = obj->query(testsql);
 	cout << ret << endl;
 
 	return 0;

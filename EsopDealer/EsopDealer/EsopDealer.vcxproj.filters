@@ -51,9 +51,6 @@
     <ClInclude Include="ProtocolHeader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="gbk_uni.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ApplicationController.cpp">
@@ -87,9 +84,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ProtocolHeader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ctype-gbk.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
